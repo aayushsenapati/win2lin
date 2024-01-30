@@ -1,0 +1,12 @@
+# Use root/example as user/password credentials
+version: '3.1'
+
+services:
+  client:
+    image: continuumio/anaconda3
+    container_name: python-devel
+    volumes:
+      - type: bind
+        source: "C:/users/aayus/docmnt"
+        target: /data
+    tty: true

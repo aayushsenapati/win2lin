@@ -1,0 +1,47 @@
+version: '3.1'
+
+services:
+
+  db:
+    container_name: postgres
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: 202002
+      POSTGRES_USER: PES1UG21CS015
+    ports:
+      - "5432:5432"
+
+  adminer:
+    container_name: pgadmin
+    image: dpage/pgadmin4
+    ports:
+      - "5050:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: aayushsenapati2002@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: 202002
+    
+  server:
+    container_name: canteen-server
+    image: node:latest
+    tty: true
+    volumes:
+      - type: volume
+        source: mount
+        target: /data
+
+  canteen-management:
+    container_name: canteen-management
+    image: node:latest
+    ports:
+      - 3000:3000
+    volumes:
+      - type: volume
+        source: mount
+        target: /data
+    tty: true
+
+volumes:
+  mount:
+    external: true
+    name: canteen-next_mount
+

@@ -1,0 +1,15 @@
+version: "3.8"
+services:
+  canteen-manage:
+    image: node:latest
+    container_name: canteen-manage
+    ports:
+      - 3000:3000
+    volumes:
+      - type: volume
+        source: mount
+        target: /data
+    tty: true
+
+volumes:
+  mount:

@@ -1,0 +1,24 @@
+version: "3.8"
+services:
+  chatbot:
+    image: node:latest
+    container_name: server
+
+    volumes:
+      - type: volume
+        source: mount
+        target: /data
+    tty: true
+
+  vendor:
+    image: node:latest
+    container_name: vendor
+    ports:
+      - "3000:3000"
+    volumes:
+      - type: volume
+        source: mount
+        target: /data
+    tty: true
+volumes:
+  mount:

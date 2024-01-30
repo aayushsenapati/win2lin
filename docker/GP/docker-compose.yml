@@ -1,0 +1,20 @@
+version: '3'
+services:
+  nn-container:
+    image: alpine:latest
+    container_name: GP
+    networks:
+      - my-network
+    volumes:
+      - type: volume
+        source: mount
+        target: /data
+    tty: true
+
+volumes:
+  mount:
+    external: true
+    name: GP
+  
+networks:
+  my-network:
